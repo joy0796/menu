@@ -173,7 +173,7 @@ Total: ₦${totalAmount}`;
           }}
           className="fixed bottom-6 right-4 bg-black px-4 py-2 rounded-full text-white flex gap-2 z-50"
         >
-          Shop here
+          Preview
           <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
         </button>
 
