@@ -149,8 +149,8 @@ Total: ₦${total}`;
         return (
           <div key={item.id} className="flex justify-between items-center">
             <div>
-              <p className="font-medium">{item.name}</p>
-              <p className="text-sm text-gray-500">₦{item.price}</p>
+              <p className="font-medium text-black">{item.name}</p>
+              <p className="text-sm text-gray-800">₦{item.price}</p>
             </div>
 
             <div className="flex items-center gap-2">
@@ -257,8 +257,8 @@ Total: ₦${total}`;
                   className="flex justify-between items-center"
                 >
                   <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="font-medium text-black">{item.name}</p>
+                    <p className="text-sm text-black">
                       ₦{item.price} × {item.quantity}
                     </p>
                   </div>
@@ -303,7 +303,7 @@ Total: ₦${total}`;
                   />
                   <input
                     type="text"
-                    placeholder="Seat Number"
+                    placeholder="Table Number"
                     value={seatNumber}
                     onChange={(e) => setSeatNumber(e.target.value)}
                     className="w-full border rounded px-3 py-2"
