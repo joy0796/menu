@@ -63,7 +63,8 @@ const extrasMenu: MenuItem[] = [
 
 /* ================= COMPONENT ================= */
 export default function Home() {
-  const [openMenu, setOpenMenu] = useState<"food" | "drinks" | "extras" | null>(null);
+  const [openMenu, setOpenMenu] =
+    useState<"food" | "drinks" | "extras" | null>(null);
   const [openDrinkSub, setOpenDrinkSub] = useState<string | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [openCart, setOpenCart] = useState(false);
@@ -102,6 +103,11 @@ export default function Home() {
     0
   );
 
+  /* ================= VAT ================= */
+  const vatRate = 0.075;
+  const vatAmount = Math.round(totalAmount * vatRate);
+  const grandTotal = totalAmount + vatAmount;
+
   /* ================= MENU RENDER ================= */
   const renderMenu = (items: MenuItem[]) => (
     <div className="bg-gray-300 rounded-lg p-4 space-y-3">
@@ -116,11 +122,17 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button onClick={() => removeFromCart(item.id)} className="border px-2 rounded border-black text-black">
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="border px-2 rounded border-black text-black"
+              >
                 −
               </button>
-              <span>{qty}</span>
-              <button onClick={() => addToCart(item)} className="border px-2 rounded border-black text-black">
+              <span className="text-black">{qty}</span>
+              <button
+                onClick={() => addToCart(item)}
+                className="border px-2 rounded border-black text-black"
+              >
                 +
               </button>
             </div>
@@ -135,7 +147,9 @@ export default function Home() {
     const itemsText = cart
       .map(
         (item) =>
-          `${item.name} x${item.quantity} - ₦${item.price * item.quantity}`
+          `${item.name} x${item.quantity} - ₦${
+            item.price * item.quantity
+          }`
       )
       .join("\n");
 
@@ -146,7 +160,8 @@ Seat Number: ${seatNumber}
 Order Items:
 ${itemsText}
 
-Total: ₦${totalAmount}`;
+VAT (7.5%): ₦${vatAmount}
+Total: ₦${grandTotal}`;
 
     const phone = "2348021999995";
     window.open(
@@ -165,7 +180,10 @@ Total: ₦${totalAmount}`;
   /* ================= UI ================= */
   return (
     <>
-      <section className="min-h-screen p-6 bg-contain bg-center" style={{ backgroundImage: "url('/logos.jpeg')" }}>
+      <section
+        className="min-h-screen p-6 bg-contain bg-center"
+        style={{ backgroundImage: "url('/logos.jpeg')" }}
+      >
         <button
           onClick={() => {
             setOpenCart(true);
@@ -178,12 +196,22 @@ Total: ₦${totalAmount}`;
         </button>
 
         <div className="max-w-md mx-auto mt-24 space-y-4">
-          <button onClick={() => setOpenMenu(openMenu === "food" ? null : "food")} className="w-full bg-black text-white py-3 rounded-lg">
+          <button
+            onClick={() =>
+              setOpenMenu(openMenu === "food" ? null : "food")
+            }
+            className="w-full bg-black text-white py-3 rounded-lg"
+          >
             Food Menu
           </button>
           {openMenu === "food" && renderMenu(foodMenu)}
 
-          <button onClick={() => setOpenMenu(openMenu === "drinks" ? null : "drinks")} className="w-full bg-black text-white py-3 rounded-lg">
+          <button
+            onClick={() =>
+              setOpenMenu(openMenu === "drinks" ? null : "drinks")
+            }
+            className="w-full bg-black text-white py-3 rounded-lg"
+          >
             Drinks Menu
           </button>
 
@@ -192,7 +220,11 @@ Total: ₦${totalAmount}`;
               {Object.entries(drinksSubMenus).map(([title, items]) => (
                 <div key={title}>
                   <button
-                    onClick={() => setOpenDrinkSub(openDrinkSub === title ? null : title)}
+                    onClick={() =>
+                      setOpenDrinkSub(
+                        openDrinkSub === title ? null : title
+                      )
+                    }
                     className="w-full bg-gray-800 text-white py-2 rounded-lg"
                   >
                     {title}
@@ -203,7 +235,12 @@ Total: ₦${totalAmount}`;
             </div>
           )}
 
-          <button onClick={() => setOpenMenu(openMenu === "extras" ? null : "extras")} className="w-full bg-black text-white py-3 rounded-lg">
+          <button
+            onClick={() =>
+              setOpenMenu(openMenu === "extras" ? null : "extras")
+            }
+            className="w-full bg-black text-white py-3 rounded-lg"
+          >
             Extras
           </button>
           {openMenu === "extras" && renderMenu(extrasMenu)}
@@ -212,78 +249,91 @@ Total: ₦${totalAmount}`;
 
       {/* CART MODAL */}
       <Modal open={openCart} onClose={() => setOpenCart(false)}>
-        <Box
-          className={`absolute bg-white rounded-lg p-4 transition-all ${
-            isMinimized
-              ? "bottom-4 right-4 w-56"
-              : "top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2"
-          }`}
-        >
+        <Box className="absolute bg-white rounded-lg p-4 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2">
           <div className="flex justify-between items-center mb-3">
             <h2 className="font-semibold text-black">Your Cart</h2>
-            <button onClick={() => setIsMinimized(!isMinimized)} className="border px-2 rounded">
-              {isMinimized ? "Restore" : "Minimize"}
+            <button
+              onClick={() => {
+                setIsMinimized(true);
+                setOpenCart(false);
+              }}
+              className="border px-2 rounded"
+            >
+              Minimize
             </button>
           </div>
 
-          {!isMinimized && (
+          {cart.length === 0 ? (
+            <p className="text-gray-500">Cart is empty</p>
+          ) : (
             <>
-              {cart.length === 0 ? (
-                <p className="text-gray-500">Cart is empty</p>
-              ) : (
-                <>
-                  {cart.map((item) => (
-                    <div key={item.id} className="flex justify-between items-center mb-2">
-                      <div>
-                        <p className="font-medium">{item.name}</p>
-                        <p className="text-sm">
-                          ₦{item.price} × {item.quantity}
-                        </p>
-                      </div>
-                      <div className="flex gap-2">
-                        <button onClick={() => removeFromCart(item.id)} className="border px-2 rounded border-black text-black">
-                          −
-                        </button>
-                        <span>{item.quantity}</span>
-                        <button onClick={() => addToCart(item)} className="border px-2 rounded border-black text-black">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-
-                  <div className="mt-3 font-semibold text-right">
-                    Total: ₦{totalAmount}
+              {cart.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex justify-between items-center mb-2"
+                >
+                  <div>
+                    <p className="font-medium">{item.name}</p>
+                    <p className="text-sm">
+                      ₦{item.price} × {item.quantity}
+                    </p>
                   </div>
-
-                  {!showOrderForm ? (
-                    <button onClick={() => setShowOrderForm(true)} className="mt-4 w-full bg-green-600 text-white py-2 rounded">
-                      Place Order
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="border px-2 rounded border-black text-black"
+                    >
+                      −
                     </button>
-                  ) : (
-                    <div className="mt-4 space-y-3">
-                      <input
-                        value={customerName}
-                        onChange={(e) => setCustomerName(e.target.value)}
-                        placeholder="Your Name "
-                        className="w-full  px-3 py-2 rounded border border-black "
-                      />
-                      <input
-                        value={seatNumber}
-                        onChange={(e) => setSeatNumber(e.target.value)}
-                        placeholder="Table Number"
-                        className="w-full  px-3 py-2 rounded border border-black"
-                      />
-                      <button
-                        disabled={!customerName || !seatNumber}
-                        onClick={handleWhatsAppOrder}
-                        className="w-full bg-green-700 text-white py-2 rounded disabled:opacity-50"
-                      >
-                        Confirm & Send to WhatsApp
-                      </button>
-                    </div>
-                  )}
-                </>
+                    <span className="text-black">{item.quantity}</span>
+                    <button
+                      onClick={() => addToCart(item)}
+                      className="border px-2 rounded border-black text-black"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
+
+              <div className="mt-3 space-y-1 text-right">
+                <p className="text-sm text-gray-600">
+                  VAT (7.5%): ₦{vatAmount}
+                </p>
+                <p className="font-semibold">
+                  Total: ₦{grandTotal}
+                </p>
+              </div>
+
+              {!showOrderForm ? (
+                <button
+                  onClick={() => setShowOrderForm(true)}
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded"
+                >
+                  Place Order
+                </button>
+              ) : (
+                <div className="mt-4 space-y-3">
+                  <input
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    placeholder="Your Name"
+                    className="w-full px-3 py-2 rounded border border-black"
+                  />
+                  <input
+                    value={seatNumber}
+                    onChange={(e) => setSeatNumber(e.target.value)}
+                    placeholder="Table Number"
+                    className="w-full px-3 py-2 rounded border border-black"
+                  />
+                  <button
+                    disabled={!customerName || !seatNumber}
+                    onClick={handleWhatsAppOrder}
+                    className="w-full bg-green-700 text-white py-2 rounded disabled:opacity-50"
+                  >
+                    Confirm & Send to WhatsApp
+                  </button>
+                </div>
               )}
             </>
           )}
@@ -291,7 +341,11 @@ Total: ₦${totalAmount}`;
       </Modal>
 
       {/* TOAST */}
-      <Snackbar open={toastOpen} autoHideDuration={4000} onClose={() => setToastOpen(false)}>
+      <Snackbar
+        open={toastOpen}
+        autoHideDuration={4000}
+        onClose={() => setToastOpen(false)}
+      >
         <Alert severity="success">Order sent successfully 🎉</Alert>
       </Snackbar>
     </>
