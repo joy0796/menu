@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Modal, Box, Snackbar, Alert } from "@mui/material";
+import Image from "next/image";
 
 /* ================= TYPES ================= */
 type MenuItem = {
@@ -30,7 +31,6 @@ const foodMenu: MenuItem[] = [
   { id: 12, name: "Chicken Shawarma", price: 3500 },
 ];
 
-/* ================= DRINK SUB-MENUS ================= */
 const drinksSubMenus: Record<string, MenuItem[]> = {
   Vodka: [{ id: 13, name: "Premium Vodka", price: 8000 }],
   Cocktails: [{ id: 14, name: "Mojito", price: 3500 }],
@@ -53,7 +53,6 @@ const drinksSubMenus: Record<string, MenuItem[]> = {
   ],
 };
 
-/* ================= EXTRAS MENU ================= */
 const extrasMenu: MenuItem[] = [
   { id: 40, name: "Shisha (Single Flavor)", price: 8000 },
   { id: 41, name: "Shisha (Double Flavor)", price: 10000 },
@@ -61,7 +60,6 @@ const extrasMenu: MenuItem[] = [
   { id: 43, name: "Extra Coal", price: 1500 },
 ];
 
-/* ================= COMPONENT ================= */
 export default function Home() {
   const [openMenu, setOpenMenu] =
     useState<"food" | "drinks" | "extras" | null>(null);
@@ -74,6 +72,15 @@ export default function Home() {
   const [customerName, setCustomerName] = useState("");
   const [seatNumber, setSeatNumber] = useState("");
   const [toastOpen, setToastOpen] = useState(false);
+
+  /* ===== NEW STATES ===== */
+  const [openAttendantModal, setOpenAttendantModal] = useState(false);
+  const [attendantTable, setAttendantTable] = useState("");
+  const [attendantRequest, setAttendantRequest] = useState("");
+  const [showSongsSoon, setShowSongsSoon] = useState(false);
+const [showKaraokeSoon, setShowKaraokeSoon] = useState(false);
+const [showShoutoutSoon, setShowShoutoutSoon] = useState(false);
+
 
   /* ================= CART LOGIC ================= */
   const addToCart = (item: MenuItem) => {
@@ -103,7 +110,6 @@ export default function Home() {
     0
   );
 
-  /* ================= VAT ================= */
   const vatRate = 0.075;
   const vatAmount = Math.round(totalAmount * vatRate);
   const grandTotal = totalAmount + vatAmount;
@@ -181,20 +187,90 @@ Total: ₦${grandTotal}`;
   return (
     <>
       <section
-        className="min-h-screen p-6 bg-contain bg-center"
-        style={{ backgroundImage: "url('/logos.jpeg')" }}
+        className="min-h-screen p-6 bg-white"
+        
       >
-        <button
-          onClick={() => {
-            setOpenCart(true);
-            setIsMinimized(false);
-          }}
-          className="fixed bottom-6 right-4 bg-black px-4 py-2 rounded-full text-white flex gap-2 z-50"
-        >
-          Preview
-          <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
-        </button>
+        <div className="relative w-full h-[220px] rounded-xl overflow-hidden">
+    <Image
+      src="/logos.jpeg"
+      alt="Restaurant banner"
+      fill
+      className="object-contain"
+      priority
+    />
+  </div>
+        {/* PREVIEW + NEW ROW BUTTONS */}
+        <div className="fixed bottom-6 right-4 z-50 space-y-2">
+          <button
+            onClick={() => {
+              setOpenCart(true);
+              setIsMinimized(false);
+            }}
+            className="bg-black px-4 py-2 rounded-full text-white flex gap-2"
+          >
+            Preview
+            <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
+          </button>
 
+          {/* NEW ROW */}
+          <div className="flex gap-2">
+            <div className="flex flex-col items-center">
+    <button
+      onClick={() => setOpenAttendantModal(true)}
+      className="bg-gray-900 text-white text-xs px-2 py-1 rounded"
+    >
+      Call attendants
+    </button>
+  </div>
+
+  {/* Songs */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowSongsSoon(true)}
+      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
+    >
+      Songs
+    </button>
+    {showSongsSoon && (
+      <span className="text-[10px] text-black mt-1">
+        Coming soon
+      </span>
+    )}
+  </div>
+
+  {/* Karaoke */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowKaraokeSoon(true)}
+      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
+    >
+      Karaoke
+    </button>
+    {showKaraokeSoon && (
+      <span className="text-[10px] text-black mt-1">
+        Coming soon
+      </span>
+    )}
+  </div>
+
+  {/* Shout out */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowShoutoutSoon(true)}
+      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
+    >
+      Shout out
+    </button>
+    {showShoutoutSoon && (
+      <span className="text-[10px] text-black mt-1">
+        Coming soon
+      </span>
+    )}
+  </div>
+</div>
+        </div>
+
+        {/* MENUS (UNCHANGED) */}
         <div className="max-w-md mx-auto mt-24 space-y-4">
           <button
             onClick={() =>
@@ -247,100 +323,148 @@ Total: ₦${grandTotal}`;
         </div>
       </section>
 
-      {/* CART MODAL */}
-      <Modal open={openCart} onClose={() => setOpenCart(false)}>
-        <Box className="absolute bg-white rounded-lg p-4 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2">
-          <div className="flex justify-between items-center mb-3">
-            <h2 className="font-semibold text-black">Your Cart</h2>
-            <button
-              onClick={() => {
-                setIsMinimized(true);
-                setOpenCart(false);
-              }}
-              className="border px-2 rounded"
-            >
-              Minimize
-            </button>
-          </div>
+      {/* CALL ATTENDANT MODAL */}
+      <Modal
+        open={openAttendantModal}
+        onClose={() => setOpenAttendantModal(false)}
+      >
+        <Box className="absolute bg-white rounded-lg p-4 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 space-y-3">
+          <h2 className="font-semibold">Call Attendant</h2>
 
-          {cart.length === 0 ? (
-            <p className="text-gray-500">Cart is empty</p>
-          ) : (
-            <>
-              {cart.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex justify-between items-center mb-2"
-                >
-                  <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-sm">
-                      ₦{item.price} × {item.quantity}
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="border px-2 rounded border-black text-black"
-                    >
-                      −
-                    </button>
-                    <span className="text-black">{item.quantity}</span>
-                    <button
-                      onClick={() => addToCart(item)}
-                      className="border px-2 rounded border-black text-black"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              ))}
+          <input
+            value={attendantTable}
+            onChange={(e) => setAttendantTable(e.target.value)}
+            placeholder="Table Number"
+            className="w-full px-3 py-2 border rounded border-black"
+          />
 
-              <div className="mt-3 space-y-1 text-right">
-                <p className="text-sm text-gray-600">
-                  VAT (7.5%): ₦{vatAmount}
-                </p>
-                <p className="font-semibold">
-                  Total: ₦{grandTotal}
-                </p>
-              </div>
+          <textarea
+            value={attendantRequest}
+            onChange={(e) => setAttendantRequest(e.target.value)}
+            placeholder="Your request"
+            className="w-full px-3 py-2 border rounded border-black"
+          />
 
-              {!showOrderForm ? (
-                <button
-                  onClick={() => setShowOrderForm(true)}
-                  className="mt-4 w-full bg-green-600 text-white py-2 rounded"
-                >
-                  Place Order
-                </button>
-              ) : (
-                <div className="mt-4 space-y-3">
-                  <input
-                    value={customerName}
-                    onChange={(e) => setCustomerName(e.target.value)}
-                    placeholder="Your Name"
-                    className="w-full px-3 py-2 rounded border border-black"
-                  />
-                  <input
-                    value={seatNumber}
-                    onChange={(e) => setSeatNumber(e.target.value)}
-                    placeholder="Table Number"
-                    className="w-full px-3 py-2 rounded border border-black"
-                  />
-                  <button
-                    disabled={!customerName || !seatNumber}
-                    onClick={handleWhatsAppOrder}
-                    className="w-full bg-green-700 text-white py-2 rounded disabled:opacity-50"
-                  >
-                    Confirm & Send to WhatsApp
-                  </button>
-                </div>
-              )}
-            </>
-          )}
+          <button
+            disabled={!attendantTable || !attendantRequest}
+            onClick={() => {
+              const message = `Call Attendant 🚨
+Table: ${attendantTable}
+Request: ${attendantRequest}`;
+
+              window.open(
+                `https://wa.me/2347012785274?text=${encodeURIComponent(
+                  message
+                )}`,
+                "_blank"
+              );
+
+              setOpenAttendantModal(false);
+              setAttendantTable("");
+              setAttendantRequest("");
+            }}
+            className="w-full bg-green-600 text-white py-2 rounded disabled:opacity-50"
+          >
+            Send Request
+          </button>
         </Box>
       </Modal>
 
-      {/* TOAST */}
+      {/* CART MODAL (UNCHANGED) */}
+      {/* CART MODAL */}
+<Modal open={openCart} onClose={() => setOpenCart(false)}>
+  <Box className="absolute bg-white rounded-lg p-4 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2">
+    <div className="flex justify-between items-center mb-3">
+      <h2 className="font-semibold text-black">Your Cart</h2>
+      <button
+        onClick={() => {
+          setIsMinimized(true);
+          setOpenCart(false);
+        }}
+        className="border px-2 rounded"
+      >
+        Minimize
+      </button>
+    </div>
+
+    {cart.length === 0 ? (
+      <p className="text-gray-500">Cart is empty</p>
+    ) : (
+      <>
+        {cart.map((item) => (
+          <div
+            key={item.id}
+            className="flex justify-between items-center mb-2"
+          >
+            <div>
+              <p className="font-medium">{item.name}</p>
+              <p className="text-sm">
+                ₦{item.price} × {item.quantity}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="border px-2 rounded border-black text-black"
+              >
+                −
+              </button>
+              <span className="text-black">{item.quantity}</span>
+              <button
+                onClick={() => addToCart(item)}
+                className="border px-2 rounded border-black text-black"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        ))}
+
+        <div className="mt-3 space-y-1 text-right">
+          <p className="text-sm text-gray-600">
+            VAT (7.5%): ₦{vatAmount}
+          </p>
+          <p className="font-semibold">
+            Total: ₦{grandTotal}
+          </p>
+        </div>
+
+        {!showOrderForm ? (
+          <button
+            onClick={() => setShowOrderForm(true)}
+            className="mt-4 w-full bg-green-600 text-white py-2 rounded"
+          >
+            Place Order
+          </button>
+        ) : (
+          <div className="mt-4 space-y-3">
+            <input
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
+              placeholder="Your Name"
+              className="w-full px-3 py-2 rounded border border-black"
+            />
+            <input
+              value={seatNumber}
+              onChange={(e) => setSeatNumber(e.target.value)}
+              placeholder="Table Number"
+              className="w-full px-3 py-2 rounded border border-black"
+            />
+            <button
+              disabled={!customerName || !seatNumber}
+              onClick={handleWhatsAppOrder}
+              className="w-full bg-green-700 text-white py-2 rounded disabled:opacity-50"
+            >
+              Confirm & Send to WhatsApp
+            </button>
+          </div>
+        )}
+      </>
+    )}
+  </Box>
+</Modal>
+
+
       <Snackbar
         open={toastOpen}
         autoHideDuration={4000}
