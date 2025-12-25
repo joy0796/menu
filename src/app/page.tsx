@@ -186,11 +186,7 @@ Total: ₦${grandTotal}`;
   /* ================= UI ================= */
   return (
     <>
-      <section
-        className="min-h-screen p-6 bg-white"
-        
-      >
-        <div className="relative w-full h-[220px] rounded-xl overflow-hidden">
+    <div className="relative w-full h-[220px] rounded-xl overflow-hidden">
     <Image
       src="/logos.jpeg"
       alt="Restaurant banner"
@@ -199,6 +195,13 @@ Total: ₦${grandTotal}`;
       priority
     />
   </div>
+      <section
+        className="relative  bg-contain  p-6"
+        style={{ backgroundImage: "url('/bgimg.jpeg')" }}
+
+        
+      >
+        
         {/* PREVIEW + NEW ROW BUTTONS */}
         <div className="fixed bottom-6 right-4 z-50 space-y-2">
           <button
@@ -206,77 +209,23 @@ Total: ₦${grandTotal}`;
               setOpenCart(true);
               setIsMinimized(false);
             }}
-            className="bg-black px-4 py-2 rounded-full text-white flex gap-2"
+            className="bg-black px-4 py-2 rounded-full text-orange-400 flex gap-2"
           >
             Preview
             <span>{cart.reduce((a, b) => a + b.quantity, 0)}</span>
           </button>
 
           {/* NEW ROW */}
-          <div className="flex gap-2">
-            <div className="flex flex-col items-center">
-    <button
-      onClick={() => setOpenAttendantModal(true)}
-      className="bg-gray-900 text-white text-xs px-2 py-1 rounded"
-    >
-      Call attendants
-    </button>
-  </div>
-
-  {/* Songs */}
-  <div className="flex flex-col items-center">
-    <button
-      onClick={() => setShowSongsSoon(true)}
-      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
-    >
-      Songs
-    </button>
-    {showSongsSoon && (
-      <span className="text-[10px] text-black mt-1">
-        Coming soon
-      </span>
-    )}
-  </div>
-
-  {/* Karaoke */}
-  <div className="flex flex-col items-center">
-    <button
-      onClick={() => setShowKaraokeSoon(true)}
-      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
-    >
-      Karaoke
-    </button>
-    {showKaraokeSoon && (
-      <span className="text-[10px] text-black mt-1">
-        Coming soon
-      </span>
-    )}
-  </div>
-
-  {/* Shout out */}
-  <div className="flex flex-col items-center">
-    <button
-      onClick={() => setShowShoutoutSoon(true)}
-      className="bg-gray-800 text-white text-xs px-2 py-1 rounded"
-    >
-      Shout out
-    </button>
-    {showShoutoutSoon && (
-      <span className="text-[10px] text-black mt-1">
-        Coming soon
-      </span>
-    )}
-  </div>
-</div>
+          
         </div>
 
         {/* MENUS (UNCHANGED) */}
-        <div className="max-w-md mx-auto mt-24 space-y-4">
+        <div className="max-w-md mx-auto mt-1 space-y-4">
           <button
             onClick={() =>
               setOpenMenu(openMenu === "food" ? null : "food")
             }
-            className="w-full bg-black text-white py-3 rounded-lg"
+            className="w-full bg-black text-white py-6 rounded-lg"
           >
             Food Menu
           </button>
@@ -286,7 +235,7 @@ Total: ₦${grandTotal}`;
             onClick={() =>
               setOpenMenu(openMenu === "drinks" ? null : "drinks")
             }
-            className="w-full bg-black text-white py-3 rounded-lg"
+            className="w-full bg-black text-white py-6 rounded-lg"
           >
             Drinks Menu
           </button>
@@ -315,13 +264,79 @@ Total: ₦${grandTotal}`;
             onClick={() =>
               setOpenMenu(openMenu === "extras" ? null : "extras")
             }
-            className="w-full bg-black text-white py-3 rounded-lg"
+            className="w-full bg-black text-white py-6 rounded-lg"
           >
             Extras
           </button>
           {openMenu === "extras" && renderMenu(extrasMenu)}
         </div>
+
+
+
+        <div className="flex flex-col md:flex-row gap-2 justify-center mt-6">
+            <div className="flex flex-col ">
+    <button
+      onClick={() => setOpenAttendantModal(true)}
+      className="bg-gray-900 text-white text-xs px-14 py-4 rounded"
+    >
+      Call attendants
+    </button>
+  </div>
+
+  {/* Songs */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowSongsSoon(true)}
+      className="bg-gray-800 text-white text-xs px-14 py-4 rounded"
+    >
+      Special Song Request
+    </button>
+    {showSongsSoon && (
+      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
+        Coming soon
+      </span>
+    )}
+  </div>
+
+  {/* Karaoke */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowKaraokeSoon(true)}
+      className="bg-gray-800 text-white text-xs px-14 py-4 rounded bg-black p-2 rounded-md"
+    >
+      Karaoke Song Request
+    </button>
+    {showKaraokeSoon && (
+      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
+        Coming soon
+      </span>
+    )}
+  </div>
+
+  {/* Shout out */}
+  <div className="flex flex-col items-center">
+    <button
+      onClick={() => setShowShoutoutSoon(true)}
+      className="bg-gray-800 text-white text-xs px-14 py-4 rounded"
+    >
+      Special Shout out Request
+    </button>
+    {showShoutoutSoon && (
+      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
+        Coming soon
+      </span>
+    )}
+  </div>
+</div>
+
+
       </section>
+
+
+
+      
+
+            
 
       {/* CALL ATTENDANT MODAL */}
       <Modal
@@ -329,14 +344,31 @@ Total: ₦${grandTotal}`;
         onClose={() => setOpenAttendantModal(false)}
       >
         <Box className="absolute bg-white rounded-lg p-4 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 space-y-3">
+
+        <button
+      onClick={() => setOpenAttendantModal(false)}
+      className="absolute top-2 right-2 text-black text-lg font-bold"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
           <h2 className="font-semibold">Call Attendant</h2>
 
-          <input
-            value={attendantTable}
-            onChange={(e) => setAttendantTable(e.target.value)}
-            placeholder="Table Number"
-            className="w-full px-3 py-2 border rounded border-black"
-          />
+          <select
+  value={seatNumber}
+  onChange={(e) => setSeatNumber(e.target.value)}
+  className="w-full px-3 py-2 rounded border border-black bg-white text-black"
+>
+  <option value="" disabled>
+    Select Table Number
+  </option>
+  {Array.from({ length: 10 }, (_, i) => (
+    <option key={i + 1} value={i + 1}>
+      Table {i + 1}
+    </option>
+  ))}
+</select>
 
           <textarea
             value={attendantRequest}
@@ -397,8 +429,8 @@ Request: ${attendantRequest}`;
             className="flex justify-between items-center mb-2"
           >
             <div>
-              <p className="font-medium">{item.name}</p>
-              <p className="text-sm">
+              <p className="font-medium text-black ">{item.name}</p>
+              <p className="text-sm text-black">
                 ₦{item.price} × {item.quantity}
               </p>
             </div>
@@ -421,10 +453,10 @@ Request: ${attendantRequest}`;
         ))}
 
         <div className="mt-3 space-y-1 text-right">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             VAT (7.5%): ₦{vatAmount}
           </p>
-          <p className="font-semibold">
+          <p className="font-semibold text-black">
             Total: ₦{grandTotal}
           </p>
         </div>
@@ -444,12 +476,22 @@ Request: ${attendantRequest}`;
               placeholder="Your Name"
               className="w-full px-3 py-2 rounded border border-black"
             />
-            <input
-              value={seatNumber}
-              onChange={(e) => setSeatNumber(e.target.value)}
-              placeholder="Table Number"
-              className="w-full px-3 py-2 rounded border border-black"
-            />
+            
+            <select
+  value={seatNumber}
+  onChange={(e) => setSeatNumber(e.target.value)}
+  className="w-full px-3 py-2 rounded border border-black bg-white text-black"
+>
+  <option value="" disabled>
+    Select Table Number
+  </option>
+  {Array.from({ length: 10 }, (_, i) => (
+    <option key={i + 1} value={i + 1}>
+      Table {i + 1}
+    </option>
+  ))}
+</select>
+
             <button
               disabled={!customerName || !seatNumber}
               onClick={handleWhatsAppOrder}
