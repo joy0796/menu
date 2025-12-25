@@ -203,7 +203,7 @@ Total: ₦${grandTotal}`;
       >
         
         {/* PREVIEW + NEW ROW BUTTONS */}
-        <div className="fixed bottom-6 right-4 z-50 space-y-2">
+        <div className="fixed bottom-28 right-8 z-50 space-y-2">
           <button
             onClick={() => {
               setOpenCart(true);
@@ -273,11 +273,11 @@ Total: ₦${grandTotal}`;
 
 
 
-        <div className="flex flex-col md:flex-row gap-2 justify-center mt-6">
+        <div className="flex flex-col md:flex-row gap-2 justify-center mt-8">
             <div className="flex flex-col ">
     <button
       onClick={() => setOpenAttendantModal(true)}
-      className="bg-gray-900 text-white text-xs px-14 py-4 rounded"
+      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
     >
       Call attendants
     </button>
@@ -287,7 +287,7 @@ Total: ₦${grandTotal}`;
   <div className="flex flex-col items-center">
     <button
       onClick={() => setShowSongsSoon(true)}
-      className="bg-gray-800 text-white text-xs px-14 py-4 rounded"
+      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
     >
       Special Song Request
     </button>
@@ -302,7 +302,7 @@ Total: ₦${grandTotal}`;
   <div className="flex flex-col items-center">
     <button
       onClick={() => setShowKaraokeSoon(true)}
-      className="bg-gray-800 text-white text-xs px-14 py-4 rounded bg-black p-2 rounded-md"
+      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded bg-black p-2 rounded-full"
     >
       Karaoke Song Request
     </button>
@@ -317,7 +317,7 @@ Total: ₦${grandTotal}`;
   <div className="flex flex-col items-center">
     <button
       onClick={() => setShowShoutoutSoon(true)}
-      className="bg-gray-800 text-white text-xs px-14 py-4 rounded"
+      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
     >
       Special Shout out Request
     </button>
