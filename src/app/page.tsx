@@ -277,7 +277,7 @@ Total: ₦${grandTotal}`;
             <div className="flex flex-col ">
     <button
       onClick={() => setOpenAttendantModal(true)}
-      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
+      className="bg-gray-300 text-black font-bold text-xs px-2 py-4 rounded-full"
     >
       Call attendants
     </button>
