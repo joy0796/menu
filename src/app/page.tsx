@@ -203,7 +203,7 @@ Total: ₦${grandTotal}`;
       >
         
         {/* PREVIEW + NEW ROW BUTTONS */}
-        <div className="fixed bottom-28 right-8 z-50 space-y-2">
+        <div className="fixed bottom-6 right-6 z-50 space-y-2">
           <button
             onClick={() => {
               setOpenCart(true);
