@@ -274,6 +274,8 @@ Total: ₦${grandTotal}`;
 
 
         <div className="flex flex-col md:flex-row gap-2 justify-center mt-8">
+
+        <div>
             <div className="flex flex-col ">
     <button
       onClick={() => setOpenAttendantModal(true)}
@@ -284,7 +286,7 @@ Total: ₦${grandTotal}`;
   </div>
 
   {/* Songs */}
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center mt-2">
     <button
       onClick={() => setShowSongsSoon(true)}
       className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
@@ -298,7 +300,11 @@ Total: ₦${grandTotal}`;
     )}
   </div>
 
+  </div>
+
   {/* Karaoke */}
+
+  <div>
   <div className="flex flex-col items-center">
     <button
       onClick={() => setShowKaraokeSoon(true)}
@@ -314,7 +320,7 @@ Total: ₦${grandTotal}`;
   </div>
 
   {/* Shout out */}
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center mt-2">
     <button
       onClick={() => setShowShoutoutSoon(true)}
       className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
@@ -326,6 +332,8 @@ Total: ₦${grandTotal}`;
         Coming soon
       </span>
     )}
+  </div>
+
   </div>
 </div>
 
