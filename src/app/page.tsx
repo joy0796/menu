@@ -423,7 +423,7 @@ Request: ${attendantRequest}`;
         }}
         className="border px-2 rounded"
       >
-        Minimize
+         ×
       </button>
     </div>
 
