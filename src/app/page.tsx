@@ -279,7 +279,7 @@ Total: ₦${grandTotal}`;
             <div className="flex flex-col ">
     <button
       onClick={() => setOpenAttendantModal(true)}
-      className="bg-gray-300 text-black font-bold text-xs px-2 py-4 rounded-full"
+      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
     >
       Call attendants
     </button>
@@ -361,7 +361,7 @@ Total: ₦${grandTotal}`;
       ×
     </button>
 
-          <h2 className="font-semibold">Call Attendant</h2>
+          <h2 className="font-semibold text-black">Call Attendant</h2>
 
           <select
   value={seatNumber}
@@ -382,7 +382,7 @@ Total: ₦${grandTotal}`;
             value={attendantRequest}
             onChange={(e) => setAttendantRequest(e.target.value)}
             placeholder="Your request"
-            className="w-full px-3 py-2 border rounded border-black"
+            className="w-full px-3 py-2 border rounded border-black text-black"
           />
 
           <button
