@@ -33,19 +33,89 @@ const foodMenu: MenuItem[] = [
 
 
 const DrinksMenu: MenuItem[] = [
-  { id: 13, name: "Champagne", price: 10000 },
-  { id: 14, name: "Premium Vodka", price: 8000 },
-  { id: 15, name: "Mojito", price: 5000 },
-  { id: 16, name: "Heineken", price: 4800 },
-  { id: 17, name: "Red Wine", price: 6500 },
-  { id: 18, name: "Whiskey", price: 6000 },
-  { id: 19, name: "Apple Cider", price: 7000 },
-  { id: 20, name: "Virgin Mojito", price: 5500 },
-  { id: 21, name: "Bottled Water", price: 5200 },
-  { id: 22, name: "Chocolate Milk", price: 4500 },
-  { id: 23, name: "Fresh Orange Juice", price: 4700 },
-  { id: 24, name: "Pineapple Juice", price: 4800 },
-  { id: 25, name: "Cappuccino", price: 3500 },
+  { id: 13, name: "19 CRIMES CHARD", price: 11250 },
+  { id: 14, name: "19 Crimes Rose", price: 11250 },
+  { id: 15, name: "4TH STREET ROSE", price: 6250},
+  { id: 16, name: "4TH STREET SPARKLING RED GRAPE", price: 6250 },
+  { id: 17, name: "4th Street Red", price: 10625 },
+  { id: 18, name: "4th Street White", price: 6250 },
+  { id: 19, name: "ACE bitters", price: 2500 },
+  { id: 20, name: "AVION RESERVA(cristalino)", price: 322125 },
+  { id: 21, name: "Absolute Elyx", price: 37500 },
+  { id: 22, name: "Absolute Mandrin", price: 23750 },
+  { id: 23, name: "Absolute Plain", price: 23125 },
+  { id: 24, name: "Absolute Rapsberry", price: 23750 },
+  { id: 25, name: "Absolute Vanilla", price: 23750 },
+
+  { id: 26, name: "Ace of Spade", price: 726000 },
+  { id: 27, name: "Agavales tequila", price: 16500 },
+  { id: 28, name: "Agor", price: 10625},
+  { id: 29, name: "Almond Cookies", price: 3125 },
+  { id: 30, name: "Amabile Red", price: 9750},
+  { id: 31, name: "Amabile Rose", price: 9750},
+  { id: 32, name: "Amabile White", price: 9750 },
+  { id: 33, name: "Amarula 700ML", price: 16000 },
+  { id: 34, name: "American Honey", price: 31875 },
+  { id: 35, name: "Americano", price: 3750 },
+  { id: 36, name: "Amstel Malta", price: 1250 },
+  { id: 37, name: "Andre Brut", price: 11625 },
+  { id: 38, name: "Andre Rose", price: 14250 },
+
+  { id: 39, name: "Aperol", price: 20000 },
+  { id: 40, name: "Apothic Red", price: 17500 },
+  { id: 41, name: "Arrabella Red", price: 16875},
+  { id: 42, name: "Azul clase", price: 405000 },
+  { id: 43, name: "B & G ( Cuvee Spéciale)", price: 8125},
+  { id: 44, name: "B&G Cuvee Speciale nature sweet", price: 11625},
+  { id: 45, name: "BAILEYS SHOT", price: 5625 },
+  { id: 46, name: "BAIN'S", price: 25625 },
+  { id: 47, name: "BALLANTINES FINEST", price: 18750 },
+  { id: 48, name: "BALVENIE 12YRS", price: 104250 },
+  { id: 49, name: "BALVENIE 14YRS", price: 162500 },
+  { id: 50, name: "BELAIRE RARE LUXE", price: 55000 },
+  { id: 51, name: "BLACK BULLET", price: 2500 },
+
+  { id: 52, name: "BLUE CURACAO", price: 26250 },
+  { id: 53, name: "BOTTLE WATER", price: 500 },
+  { id: 54, name: "BROKEN GLASS", price: 3000},
+  { id: 55, name: "BUDWEISER", price: 2000 },
+  { id: 56, name: "Bacardi Gold", price: 23000},
+  { id: 57, name: "Bacardi Spice", price: 20000},
+  { id: 58, name: "Bacardi White", price: 21150 },
+  { id: 59, name: "Baileys", price: 27250 },
+  { id: 60, name: "Ballentine's shot", price: 4375 },
+  { id: 61, name: "Balvanie classic", price: 125000 },
+  { id: 62, name: "Balvenie 16yrs", price: 354450 },
+  { id: 63, name: "Balvenie 21yrs", price: 585000 },
+  { id: 64, name: "Bamoc 58 Red", price: 10625 },
+
+  { id: 65, name: "Bamoc 58 Sweet Red", price: 10625 },
+  { id: 66, name: "Banana Bread", price: 3750 },
+  { id: 67, name: "Beef Burge", price: 8125},
+  { id: 68, name: "Beefeater Gin", price: 18625 },
+  { id: 69, name: "Belaire Gold with Light", price: 70875},
+  { id: 70, name: "Belaire Gold without Light", price: 55000},
+  { id: 71, name: "Belaire Rose with Light", price: 70875 },
+  { id: 72, name: "Belaire Rose without Light", price: 55000 },
+  { id: 73, name: "Belena Red", price: 29250 },
+  { id: 74, name: "Belena White	", price: 26250},
+  { id: 75, name: "Belvedere", price: 81250 },
+  { id: 76, name: "Best Cream", price: 10000 },
+  { id: 77, name: "Big Catfish", price: 17500 },
+
+  { id: 78, name: "Big Remy Martins VSOP 1L", price: 150000 },
+  { id: 79, name: "Big Tilapia", price: 20000 },
+  { id: 80, name: "Black & White", price: 21250},
+  { id: 81, name: "Black Label", price: 53750 },
+  { id: 82, name: "Belaire Gold with Light", price: 70875},
+  { id: 83, name: "Belaire Gold without Light", price: 55000},
+  { id: 84, name: "Belaire Rose with Light", price: 70875 },
+  { id: 85, name: "Belaire Rose without Light", price: 55000 },
+  { id: 86, name: "Belena Red", price: 29250 },
+  { id: 87, name: "Belena White	", price: 26250},
+  { id: 88, name: "Belvedere", price: 81250 },
+  { id: 89, name: "Best Cream", price: 10000 },
+  { id: 90, name: "Big Catfish", price: 17500 },
 ];
 
 // const drinksSubMenus: Record<string, MenuItem[]> = {
@@ -71,10 +141,10 @@ const DrinksMenu: MenuItem[] = [
 // };
 
 const extrasMenu: MenuItem[] = [
-  { id: 40, name: "Shisha (Single Flavor)", price: 8000 },
-  { id: 41, name: "Shisha (Double Flavor)", price: 10000 },
-  { id: 42, name: "Shisha Refill", price: 5000 },
-  { id: 43, name: "Extra Coal", price: 1500 },
+  { id: 91, name: "Shisha (Single Flavor)", price: 8000 },
+  { id: 92, name: "Shisha (Double Flavor)", price: 10000 },
+  { id: 93, name: "Shisha Refill", price: 5000 },
+  { id: 94, name: "Extra Coal", price: 1500 },
 ];
 
 export default function Home() {
@@ -97,6 +167,14 @@ export default function Home() {
   const [showSongsSoon, setShowSongsSoon] = useState(false);
 const [showKaraokeSoon, setShowKaraokeSoon] = useState(false);
 const [showShoutoutSoon, setShowShoutoutSoon] = useState(false);
+
+const showTemporarily = (setState: React.Dispatch<React.SetStateAction<boolean>>) => {
+  setState(true);
+  setTimeout(() => {
+    setState(false);
+  }, 1000); // 1 second
+};
+
 
 
   /* ================= CART LOGIC ================= */
@@ -305,66 +383,74 @@ Total: ₦${grandTotal}`;
 
         <div className="flex flex-row gap-2 justify-center mt-8">
 
-        <div>
-            <div className="flex flex-col ">
-    <button
-      onClick={() => setOpenAttendantModal(true)}
-      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
-    >
-      Call attendants
-    </button>
-  </div>
+       <div>
+        {/* Call Attendants */}
+        <div className="flex flex-col items-center">
+          <button
+            onClick={() => showTemporarily(setShowSongsSoon)}
+            className="bg-gray-400 text-black font-bold text-xs px-6 py-4 rounded-full"
+          >
+            Call Attendants
+          </button>
 
-  {/* Songs */}
-  <div className="flex flex-col items-center mt-2">
-    <button
-      onClick={() => setShowSongsSoon(true)}
-      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
-    >
-      Special Song Request
-    </button>
-    {showSongsSoon && (
-      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
-        Coming soon
-      </span>
-    )}
-  </div>
+          {showSongsSoon && (
+            <span className="text-[12px] text-white mt-1 font-bold bg-black px-3 py-1 rounded-md">
+              Coming soon
+            </span>
+          )}
+        </div>
 
-  </div>
+        {/* Special Song */}
+        <div className="flex flex-col items-center mt-2">
+          <button
+            onClick={() => showTemporarily(setShowSongsSoon)}
+            className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
+          >
+            Special Song Request
+          </button>
 
-  {/* Karaoke */}
+          {showSongsSoon && (
+            <span className="text-[12px] text-white mt-1 font-bold bg-black px-3 py-1 rounded-md">
+              Coming soon
+            </span>
+          )}
+        </div>
+      </div>
 
-  <div>
-  <div className="flex flex-col items-center">
-    <button
-      onClick={() => setShowKaraokeSoon(true)}
-      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded bg-black p-2 rounded-full"
-    >
-      Karaoke Song Request
-    </button>
-    {showKaraokeSoon && (
-      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
-        Coming soon
-      </span>
-    )}
-  </div>
+      {/* Right Column */}
+      <div>
+        {/* Karaoke */}
+        <div className="flex flex-col items-center">
+          <button
+            onClick={() => showTemporarily(setShowKaraokeSoon)}
+            className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
+          >
+            Karaoke Song Request
+          </button>
 
-  {/* Shout out */}
-  <div className="flex flex-col items-center mt-2">
-    <button
-      onClick={() => setShowShoutoutSoon(true)}
-      className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
-    >
-      Special Shout out Request
-    </button>
-    {showShoutoutSoon && (
-      <span className="text-[12px] text-white mt-1 font-bold bg-black p-2 rounded-md">
-        Coming soon
-      </span>
-    )}
-  </div>
+          {showKaraokeSoon && (
+            <span className="text-[12px] text-white mt-1 font-bold bg-black px-3 py-1 rounded-md">
+              Coming soon
+            </span>
+          )}
+        </div>
 
-  </div>
+        {/* Shout Out */}
+        <div className="flex flex-col items-center mt-2">
+          <button
+            onClick={() => showTemporarily(setShowShoutoutSoon)}
+            className="bg-gray-400 text-black font-bold text-xs px-2 py-4 rounded-full"
+          >
+            Special Shout out Request
+          </button>
+
+          {showShoutoutSoon && (
+            <span className="text-[12px] text-white mt-1 font-bold bg-black px-3 py-1 rounded-md">
+              Coming soon
+            </span>
+          )}
+        </div>
+      </div>
 </div>
 
 
