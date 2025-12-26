@@ -31,27 +31,44 @@ const foodMenu: MenuItem[] = [
   { id: 12, name: "Chicken Shawarma", price: 3500 },
 ];
 
-const drinksSubMenus: Record<string, MenuItem[]> = {
-  Vodka: [{ id: 13, name: "Premium Vodka", price: 8000 }],
-  Cocktails: [{ id: 14, name: "Mojito", price: 3500 }],
-  Beer: [{ id: 15, name: "Heineken", price: 1500 }],
-  Wines: [{ id: 16, name: "Red Wine", price: 9000 }],
-  Spirits: [{ id: 17, name: "Whiskey", price: 7000 }],
-  Cider: [{ id: 18, name: "Apple Cider", price: 2500 }],
-  Mocktails: [{ id: 19, name: "Virgin Mojito", price: 3000 }],
-  Water: [{ id: 20, name: "Bottled Water", price: 500 }],
-  Milks: [{ id: 21, name: "Chocolate Milk", price: 1200 }],
-  Juices: [
-    { id: 22, name: "Fresh Orange Juice", price: 2000 },
-    { id: 23, name: "Pineapple Juice", price: 2000 },
-  ],
-  "Coffee & Tea": [{ id: 24, name: "Cappuccino", price: 2200 }],
-  "Sodas & Soft Drinks": [
-    { id: 25, name: "Pepsi", price: 1000 },
-    { id: 26, name: "Fanta", price: 1000 },
-    { id: 27, name: "Sprite", price: 1000 },
-  ],
-};
+
+const DrinksMenu: MenuItem[] = [
+  { id: 13, name: "Champagne", price: 10000 },
+  { id: 14, name: "Premium Vodka", price: 8000 },
+  { id: 15, name: "Mojito", price: 5000 },
+  { id: 16, name: "Heineken", price: 4800 },
+  { id: 17, name: "Red Wine", price: 6500 },
+  { id: 18, name: "Whiskey", price: 6000 },
+  { id: 19, name: "Apple Cider", price: 7000 },
+  { id: 20, name: "Virgin Mojito", price: 5500 },
+  { id: 21, name: "Bottled Water", price: 5200 },
+  { id: 22, name: "Chocolate Milk", price: 4500 },
+  { id: 23, name: "Fresh Orange Juice", price: 4700 },
+  { id: 24, name: "Pineapple Juice", price: 4800 },
+  { id: 25, name: "Cappuccino", price: 3500 },
+];
+
+// const drinksSubMenus: Record<string, MenuItem[]> = {
+//   Vodka: [{ id: 13, name: "Premium Vodka", price: 8000 }],
+//   Cocktails: [{ id: 14, name: "Mojito", price: 3500 }],
+//   Beer: [{ id: 15, name: "Heineken", price: 1500 }],
+//   Wines: [{ id: 16, name: "Red Wine", price: 9000 }],
+//   Spirits: [{ id: 17, name: "Whiskey", price: 7000 }],
+//   Cider: [{ id: 18, name: "Apple Cider", price: 2500 }],
+//   Mocktails: [{ id: 19, name: "Virgin Mojito", price: 3000 }],
+//   Water: [{ id: 20, name: "Bottled Water", price: 500 }],
+//   Milks: [{ id: 21, name: "Chocolate Milk", price: 1200 }],
+//   Juices: [
+//     { id: 22, name: "Fresh Orange Juice", price: 2000 },
+//     { id: 23, name: "Pineapple Juice", price: 2000 },
+//   ],
+//   "Coffee & Tea": [{ id: 24, name: "Cappuccino", price: 2200 }],
+//   "Sodas & Soft Drinks": [
+//     { id: 25, name: "Pepsi", price: 1000 },
+//     { id: 26, name: "Fanta", price: 1000 },
+//     { id: 27, name: "Sprite", price: 1000 },
+//   ],
+// };
 
 const extrasMenu: MenuItem[] = [
   { id: 40, name: "Shisha (Single Flavor)", price: 8000 },
@@ -231,7 +248,7 @@ Total: ₦${grandTotal}`;
           </button>
           {openMenu === "food" && renderMenu(foodMenu)}
 
-          <button
+          {/* <button
             onClick={() =>
               setOpenMenu(openMenu === "drinks" ? null : "drinks")
             }
@@ -258,7 +275,20 @@ Total: ₦${grandTotal}`;
                 </div>
               ))}
             </div>
-          )}
+          )} */}
+
+            <button
+            onClick={() =>
+              setOpenMenu(openMenu === "drinks" ? null : "drinks")
+            }
+            className="w-full bg-black text-white py-6 rounded-lg"
+          >
+            Drinks Menu
+          </button>
+          {openMenu === "drinks" && renderMenu(DrinksMenu)}
+            
+
+
 
           <button
             onClick={() =>
@@ -273,7 +303,7 @@ Total: ₦${grandTotal}`;
 
 
 
-        <div className="flex flex-col md:flex-row gap-2 justify-center mt-8">
+        <div className="flex flex-row gap-2 justify-center mt-8">
 
         <div>
             <div className="flex flex-col ">
@@ -442,7 +472,7 @@ Request: ${attendantRequest}`;
                 ₦{item.price} × {item.quantity}
               </p>
             </div>
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               <button
                 onClick={() => removeFromCart(item.id)}
                 className="border px-2 rounded border-black text-black"
@@ -456,7 +486,7 @@ Request: ${attendantRequest}`;
               >
                 +
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
 
@@ -469,7 +499,7 @@ Request: ${attendantRequest}`;
           </p>
         </div>
 
-        {!showOrderForm ? (
+        {/* {!showOrderForm ? (
           <button
             onClick={() => setShowOrderForm(true)}
             className="mt-4 w-full bg-green-600 text-white py-2 rounded"
@@ -508,7 +538,7 @@ Request: ${attendantRequest}`;
               Confirm & Send to WhatsApp
             </button>
           </div>
-        )}
+        )} */}
       </>
     )}
   </Box>
