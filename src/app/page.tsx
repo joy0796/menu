@@ -281,7 +281,7 @@ Total: ₦${grandTotal}`;
   /* ================= UI ================= */
   return (
     <>
-    <div className="relative w-full h-[220px] rounded-xl overflow-hidden">
+    <div className="relative w-full h-[220px] rounded-xl overflow-hidden bg-white">
     <Image
       src="/logos.jpeg"
       alt="Restaurant banner"
@@ -291,7 +291,7 @@ Total: ₦${grandTotal}`;
     />
   </div>
       <section
-        className="relative  bg-contain  p-6"
+        className="relative  bg-contain  p-6  min-h-screen"
         style={{ backgroundImage: "url('/bgimg.jpeg')" }}
 
         
