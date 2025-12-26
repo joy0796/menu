@@ -17,18 +17,18 @@ type CartItem = MenuItem & {
 
 /* ================= MENU DATA ================= */
 const foodMenu: MenuItem[] = [
-  { id: 1, name: "Classic Burger", price: 4500 },
-  { id: 2, name: "Cheese Burger", price: 5000 },
-  { id: 3, name: "Chicken Burger", price: 4800 },
-  { id: 4, name: "Pepperoni Pizza", price: 6500 },
-  { id: 5, name: "Margherita Pizza", price: 6000 },
-  { id: 6, name: "BBQ Chicken Pizza", price: 7000 },
-  { id: 7, name: "Grilled Chicken", price: 5500 },
-  { id: 8, name: "Fried Chicken & Chips", price: 5200 },
-  { id: 9, name: "Jollof Rice & Chicken", price: 4500 },
-  { id: 10, name: "Fried Rice & Beef", price: 4700 },
-  { id: 11, name: "Spaghetti Bolognese", price: 4800 },
-  { id: 12, name: "Chicken Shawarma", price: 3500 },
+  { id: 1, name: "Big Catfish", price: 17500 },
+  { id: 2, name: "Big Tilapia", price: 20000 },
+  { id: 3, name: "Banana Bread", price: 3750 },
+  { id: 4, name: "Beef Burge", price: 8125 },
+  { id: 5, name: "Fries", price: 3000 },
+  // { id: 6, name: "BBQ Chicken Pizza", price: 7000 },
+  // { id: 7, name: "Grilled Chicken", price: 5500 },
+  // { id: 8, name: "Fried Chicken & Chips", price: 5200 },
+  // { id: 9, name: "Jollof Rice & Chicken", price: 4500 },
+  // { id: 10, name: "Fried Rice & Beef", price: 4700 },
+  // { id: 11, name: "Spaghetti Bolognese", price: 4800 },
+  // { id: 12, name: "Chicken Shawarma", price: 3500 },
 ];
 
 
@@ -164,6 +164,7 @@ export default function Home() {
   const [openAttendantModal, setOpenAttendantModal] = useState(false);
   const [attendantTable, setAttendantTable] = useState("");
   const [attendantRequest, setAttendantRequest] = useState("");
+  const [showAttendants, setShowAttendantsSoon] = useState(false);
   const [showSongsSoon, setShowSongsSoon] = useState(false);
 const [showKaraokeSoon, setShowKaraokeSoon] = useState(false);
 const [showShoutoutSoon, setShowShoutoutSoon] = useState(false);
@@ -381,19 +382,19 @@ Total: ₦${grandTotal}`;
 
 
 
-        <div className="flex flex-row gap-2 justify-center mt-8">
+        <div className="flex flex-row gap-2 justify-center mt-20">
 
        <div>
         {/* Call Attendants */}
         <div className="flex flex-col items-center">
           <button
-            onClick={() => showTemporarily(setShowSongsSoon)}
+            onClick={() => showTemporarily(setShowAttendantsSoon)}
             className="bg-gray-400 text-black font-bold text-xs px-6 py-4 rounded-full"
           >
             Call Attendants
           </button>
 
-          {showSongsSoon && (
+          {showAttendants && (
             <span className="text-[12px] text-white mt-1 font-bold bg-black px-3 py-1 rounded-md">
               Coming soon
             </span>
