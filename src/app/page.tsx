@@ -382,7 +382,7 @@ Total: ₦${grandTotal}`;
 
 
 
-        <div className="flex flex-row gap-2 justify-center mt-20">
+        <div className="flex flex-row gap-2 justify-center mt-40">
 
        <div>
         {/* Call Attendants */}
